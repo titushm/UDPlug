@@ -43,6 +43,43 @@ UDPlug is used as a plugin in Tasker.
 
 When the Tasker action is executed, it will trigger UDPlug to send the configured UDP packet. If "Wait for response" is enabled, the response data will be available in the `%response` Tasker variable.
 
+### Using Variables
+
+You can use Tasker variables in the IP address, port, and payload fields. Simply use the variable name with a `%` prefix, like `%my_ip_address`, `%my_port`, or `%my_payload`.
+
+### Examples
+
+#### Example 1: Simple Message
+
+- **IP Address**: `192.168.1.100`
+- **Port**: `12345`
+- **Payload**: `Hello, device!`
+- **Wait for response**: Unchecked
+
+This will send the text "Hello, device!" to the device at `192.168.1.100` on port `12345`.
+
+#### Example 2: Hex Command with Response
+
+- **IP Address**: `192.168.1.100`
+- **Port**: `54321`
+- **Payload**: `DEADBEEF`
+- **Hex Payload**: Checked
+- **Wait for response**: Checked
+- **Hex Response**: Checked
+
+This will send the hex value `DEADBEEF` and wait for a response. The response will be stored in the `%response` variable in hex format.
+
+#### Example 3: Using variables
+
+- **IP Address**: `%my_ip_address`
+- **Port**: `54321`
+- **Payload**: `Hello world`
+- **Hex Payload**: Unchecked
+- **Wait for response**: Unchecked
+- **Hex Response**: Unchecked
+
+This will send the text "Hello world" to the IP address stored in the `%my_ip_address` Tasker variable on port `54321`.
+
 ## Download
 
 Download the latest apk from the [releases page](https://github.com/titushm/UDPlug/releases).
