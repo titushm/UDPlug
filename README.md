@@ -1,7 +1,7 @@
 # UDPlug
 
 <p align="center">
-  <img src="assets/udplug.png" alt="UDPlug Logo" width="200"/>
+  <img src="assets/udplug.svg" alt="UDPlug Logo" width="200"/>
 </p>
 
 <p align="center">
