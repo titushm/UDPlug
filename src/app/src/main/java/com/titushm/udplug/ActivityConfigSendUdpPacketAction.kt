@@ -43,7 +43,7 @@ class UdpRequestHelper(config: TaskerPluginConfig<UdpRequestInput>) :
     override val inputClass = UdpRequestInput::class.java
     override val outputClass = UdpRequestOutput::class.java
     override fun addToStringBlurb(input: TaskerInput<UdpRequestInput>, blurbBuilder: StringBuilder) {
-        blurbBuilder.append("\nSending UDP packet to ${input.regular.ipAddress}:${input.regular.port}")
+        blurbBuilder.append(" Sending UDP packet to ${input.regular.ipAddress}:${input.regular.port}")
         if(input.regular.waitForResponse == true) {
             blurbBuilder.append(" and waiting for response")
         }
@@ -71,13 +71,13 @@ class ActivityConfigUdpRequestAction : Activity(), TaskerPluginConfig<UdpRequest
         val intent = Intent(this, MainActivity::class.java).apply {
             taskerInput?.regular?.let {
                 putExtra(MainActivity.EXTRA_IP_ADDRESS, it.ipAddress)
-                putExtra(MainActivity.EXTRA_PORT, it.port.toString())
+                putExtra(MainActivity.EXTRA_PORT, it.port?.toString() ?: "")
                 putExtra(MainActivity.EXTRA_PAYLOAD, it.payload)
                 putExtra(MainActivity.EXTRA_IS_HEX_PAYLOAD, it.isHexPayload)
                 putExtra(MainActivity.EXTRA_USE_HEX_RESPONSE, it.useHexResponse)
                 putExtra(MainActivity.EXTRA_WAIT_FOR_RESPONSE, it.waitForResponse)
-                putExtra(MainActivity.EXTRA_TIMEOUT, it.timeout.toString())
-                putExtra(MainActivity.EXTRA_MAX_BUFFER_SIZE, it.maxBufferSize.toString())
+                putExtra(MainActivity.EXTRA_TIMEOUT, it.timeout?.toString() ?: "")
+                putExtra(MainActivity.EXTRA_MAX_BUFFER_SIZE, it.maxBufferSize?.toString() ?: "")
             }
         }
         startActivityForResult(intent, 1)

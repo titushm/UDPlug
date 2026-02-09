@@ -31,6 +31,9 @@
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
             </intent-filter>
+            <meta-data
+                android:name="com.twofortyfouram.locale.intent.extra.BLURB"
+                android:value="Sending UDP Packet" />
         </activity>
 
     </application>
